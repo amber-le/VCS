@@ -1,4 +1,6 @@
-public class Levenshtein implements MetricStringDistance {
+package com.amber.algo;
+
+public class Levenshtein {
 
     /**
      * Equivalent to distance(s1, s2, Integer.MAX_VALUE).
@@ -6,6 +8,7 @@ public class Levenshtein implements MetricStringDistance {
     public final double distance(final String s1, final String s2) {
         return distance(s1, s2, Integer.MAX_VALUE);
     }
+
     public final double distance(final String s1, final String s2,
                                  final int limit) {
         if (s1 == null) {

@@ -1,0 +1,206 @@
+
+
+
+
+1. Project Overview, 
+total_file, total_contributors, project_author, total_commit, total_line_added, total_line_removed, project_author
+137,13,25986,3859883,651826,Tuyen Mai
+
+
+
+
+2. File Details, 
+ , file_path, total_file_lines author_name, author_email, %_contributed, line_contributed
+1,Sources/OpenKey/engine/Engine.cpp,1558,Tuyen Mai,maivutuyen.91@gmail.com,100,1558
+2,Sources/OpenKey/macOS/ModernKey/Resources/ExitButton@2x.png,14,Tuyen Mai,maivutuyen.91@gmail.com,100,14
+3,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/OpenKeyUpdate.vcxproj.user,4,Tuyen Mai,maivutuyen.91@gmail.com,100,4
+4,Sources/OpenKey/win32/OpenKey/OpenKey/ConvertToolDialog.h,39,Tuyen Mai,maivutuyen.91@gmail.com,100,39
+5,Sources/OpenKey/macOS/ModernKey/main.m,14,Tuyen Mai,maivutuyen.91@gmail.com,100,14
+6,version.json,10,Tuyen Mai,maivutuyen.91@gmail.com,100,10
+7,Sources/OpenKey/win32/OpenKey/OpenKey/BaseDialog.cpp,93,Tuyen Mai,maivutuyen.91@gmail.com,100,93
+8,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKey.aps,164,Tuyen Mai,maivutuyen.91@gmail.com,100,164
+9,Sources/OpenKey/engine/Vietnamese.h,37,Tuyen Mai,maivutuyen.91@gmail.com,100,37
+10,Sources/OpenKey/macOS/ModernKey/Resources/StatusHighlighted.png,64,Dao Hoang Son,daohoangson@gmail.com,96,62
+11,Sources/OpenKey/macOS/ModernKey/Resources/StatusHighlighted.png,64,Tuyen Mai,maivutuyen.91@gmail.com,100,2
+12,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/framework.h,15,Tuyen Mai,maivutuyen.91@gmail.com,100,15
+13,Sources/OpenKey/win32/OpenKey/OpenKey/AppDelegate.h,54,Tuyen Mai,maivutuyen.91@gmail.com,100,54
+14,Sources/OpenKey/macOS/ModernKey/Resources/Icon.icns,588,Tuyen Mai,maivutuyen.91@gmail.com,100,588
+15,Sources/OpenKey/macOS/ModernKey/Resources/StatusHighlightedEng@2x.png,66,Dao Hoang Son,daohoangson@gmail.com,96,64
+16,Sources/OpenKey/macOS/ModernKey/Resources/StatusHighlightedEng@2x.png,66,Tuyen Mai,maivutuyen.91@gmail.com,100,2
+17,Sources/OpenKey/engine/Macro.h,75,Tuyen Mai,maivutuyen.91@gmail.com,100,75
+18,Sources/OpenKey/macOS/ModernKey/Resources/Status.png,62,Dao Hoang Son,daohoangson@gmail.com,96,60
+19,Sources/OpenKey/macOS/ModernKey/Resources/Status.png,62,Tuyen Mai,maivutuyen.91@gmail.com,100,2
+20,Sources/OpenKey/macOS/OpenKey.xcodeproj/xcshareddata/xcschemes/OpenKeyHelper.xcscheme,87,Tuyen Mai,maivutuyen.91@gmail.com,100,85
+21,Sources/OpenKey/macOS/OpenKey.xcodeproj/xcshareddata/xcschemes/OpenKeyHelper.xcscheme,87,Bach Le,ldbach97@gmail.com,null,2
+22,Sources/OpenKey/macOS/OpenKey.xcodeproj/project.xcworkspace/xcuserdata/tuyen.xcuserdatad/UserInterfaceState.xcuserstate,648,Tuyen Mai,maivutuyen.91@gmail.com,100,648
+23,Sources/OpenKey/macOS/OpenKey.xcodeproj/xcuserdata/ltn.xcuserdatad/xcschemes/xcschememanagement.plist,29,trungnghiatn,chihuong.100@gmail.com,100,29
+24,Sources/OpenKey/macOS/ModernKey/Resources/ThumbUp@2x.png,19,Tuyen Mai,maivutuyen.91@gmail.com,100,19
+25,Sources/OpenKey/win32/OpenKey/OpenKey/MacroDialog.cpp,253,Tuyen Mai,maivutuyen.91@gmail.com,100,253
+26,Sources/OpenKey/macOS/ModernKey/Resources/StartConvert@2x.png,21,Tuyen Mai,maivutuyen.91@gmail.com,100,21
+27,Sources/OpenKey/macOS/ModernKey/Resources/StatusEng@2x.png,65,Dao Hoang Son,daohoangson@gmail.com,96,63
+28,Sources/OpenKey/macOS/ModernKey/Resources/StatusEng@2x.png,65,Tuyen Mai,maivutuyen.91@gmail.com,100,2
+29,Sources/OpenKey/macOS/OpenKey.entitlements,5,Tuyen Mai,maivutuyen.91@gmail.com,100,5
+30,Sources/OpenKey/macOS/OpenKey.xcodeproj/project.xcworkspace/contents.xcworkspacedata,7,Tuyen Mai,maivutuyen.91@gmail.com,100,7
+31,Sources/OpenKey/macOS/OpenKeyHelper/AppDelegate.h,15,Tuyen Mai,maivutuyen.91@gmail.com,100,15
+32,Sources/OpenKey/macOS/ModernKey/MJAccessibilityUtils.h,21,ntt123,ntt123@earth,97,21
+33,Sources/OpenKey/macOS/OpenKeyHelper/Info.plist,34,Tuyen Mai,maivutuyen.91@gmail.com,100,34
+34,Sources/OpenKey/macOS/OpenKey.xcodeproj/xcshareddata/xcschemes/OpenKey.xcscheme,97,Tuyen Mai,maivutuyen.91@gmail.com,100,97
+35,Sources/OpenKey/macOS/ModernKey/ConvertToolViewController.mm,190,Tuyen Mai,maivutuyen.91@gmail.com,100,190
+36,Sources/OpenKey/macOS/ModernKey/MacroViewController.mm,175,Tuyen Mai,maivutuyen.91@gmail.com,100,175
+37,Sources/OpenKey/macOS/OpenKeyHelper/AppDelegate.m,34,Tuyen Mai,maivutuyen.91@gmail.com,100,34
+38,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/OpenKeyUpdate.cpp,141,Tuyen Mai,maivutuyen.91@gmail.com,100,141
+39,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/targetver.h,6,Tuyen Mai,maivutuyen.91@gmail.com,100,6
+40,Sources/OpenKey/macOS/ModernKey/MJAccessibilityUtils.m,42,Tuan,tuanpm@live.com,null,1
+41,Sources/OpenKey/macOS/ModernKey/MJAccessibilityUtils.m,42,ntt123,ntt123@earth,97,41
+42,Sources/OpenKey/macOS/ModernKey/Resources/ThumbUp.png,11,Tuyen Mai,maivutuyen.91@gmail.com,100,11
+43,Sources/OpenKey/macOS/ModernKey/Resources/StatusEng.png,62,Dao Hoang Son,daohoangson@gmail.com,96,60
+44,Sources/OpenKey/macOS/ModernKey/Resources/StatusEng.png,62,Tuyen Mai,maivutuyen.91@gmail.com,100,2
+45,Sources/OpenKey/macOS/OpenKeyHelper/Assets.xcassets/AppIcon.appiconset/Contents.json,58,Tuyen Mai,maivutuyen.91@gmail.com,100,58
+46,Sources/OpenKey/macOS/ModernKey/MyTextField.h,22,Tuyen Mai,maivutuyen.91@gmail.com,100,22
+47,Sources/OpenKey/win32/OpenKey/OpenKey.sln,41,Tuyen Mai,maivutuyen.91@gmail.com,100,41
+48,Sources/OpenKey/macOS/OpenKeyHelper/Base.lproj/MainMenu.xib,17,Tuyen Mai,maivutuyen.91@gmail.com,100,17
+49,Sources/OpenKey/win32/OpenKey/OpenKey/SystemTrayHelper.h,29,Tuyen Mai,maivutuyen.91@gmail.com,100,29
+50,Sources/OpenKey/macOS/ModernKey/Resources/Status@2x.png,66,Dao Hoang Son,daohoangson@gmail.com,96,64
+51,Sources/OpenKey/macOS/ModernKey/Resources/Status@2x.png,66,Tuyen Mai,maivutuyen.91@gmail.com,100,2
+52,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/OpenKeyUpdate.vcxproj.filters,53,Tuyen Mai,maivutuyen.91@gmail.com,100,53
+53,Sources/OpenKey/macOS/ModernKey/Resources/StartConvert.png,5,Tuyen Mai,maivutuyen.91@gmail.com,100,5
+54,Sources/OpenKey/macOS/OpenKey.xcodeproj/project.xcworkspace/xcuserdata/ltn.xcuserdatad/UserInterfaceState.xcuserstate,40,trungnghiatn,chihuong.100@gmail.com,100,40
+55,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/resource.h,29,Tuyen Mai,maivutuyen.91@gmail.com,100,29
+56,Sources/OpenKey/win32/OpenKey/OpenKey/ExitButton.ico,3,Tuyen Mai,maivutuyen.91@gmail.com,100,3
+57,Sources/OpenKey/win32/OpenKey/OpenKey/MacroDialog.h,45,Tuyen Mai,maivutuyen.91@gmail.com,100,45
+58,Sources/OpenKey/macOS/ModernKey/MyTextField.m,68,Tuyen Mai,maivutuyen.91@gmail.com,100,68
+59,Sources/OpenKey/macOS/ModernKey/OpenKey.mm,765,Vu Ngoc Trung,vungoctrung93@gmail.com,null,21
+60,Sources/OpenKey/macOS/ModernKey/OpenKey.mm,765,Tuyen Mai,maivutuyen.91@gmail.com,100,711
+61,Sources/OpenKey/macOS/ModernKey/OpenKey.mm,765,Bach Le,ldbach97@gmail.com,null,33
+62,Sources/OpenKey/macOS/ModernKey/Assets.xcassets/Contents.json,6,Tuyen Mai,maivutuyen.91@gmail.com,100,6
+63,Sources/OpenKey/macOS/ModernKey/ConvertToolViewController.h,36,Tuyen Mai,maivutuyen.91@gmail.com,100,36
+64,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKeyManager.h,29,Tuyen Mai,maivutuyen.91@gmail.com,100,29
+65,Sources/OpenKey/win32/OpenKey/OpenKey/SystemTrayHelper.cpp,349,Tuyen Mai,maivutuyen.91@gmail.com,100,349
+66,Sources/OpenKey/engine/platforms/linux.h,78,Tuyen Mai,maivutuyen.91@gmail.com,100,78
+67,Sources/OpenKey/macOS/ModernKey/Info.plist,42,Tuyen Mai,maivutuyen.91@gmail.com,100,42
+68,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKey.vcxproj.user,4,Tuyen Mai,maivutuyen.91@gmail.com,100,4
+69,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKeyManager.cpp,104,Tuyen Mai,maivutuyen.91@gmail.com,100,104
+70,Sources/OpenKey/win32/OpenKey/OpenKey/AboutDialog.cpp,115,Tuyen Mai,maivutuyen.91@gmail.com,100,115
+71,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKeyHelper.h,50,Tuyen Mai,maivutuyen.91@gmail.com,100,50
+72,Sources/OpenKey/win32/OpenKey/OpenKey/StatusViet10.ico,29,Tuyen Mai,maivutuyen.91@gmail.com,100,29
+73,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/OpenKeyUpdate.ico,69,Tuyen Mai,maivutuyen.91@gmail.com,100,69
+74,Sources/OpenKey/win32/OpenKey/OpenKey/MainControlDialog.cpp,606,Tuyen Mai,maivutuyen.91@gmail.com,100,606
+75,Sources/OpenKey/macOS/OpenKeyHelper/Assets.xcassets/Contents.json,6,Tuyen Mai,maivutuyen.91@gmail.com,100,6
+76,Sources/OpenKey/macOS/OpenKeyHelper/OpenKeyHelper.entitlements,5,Tuyen Mai,maivutuyen.91@gmail.com,100,5
+77,Sources/OpenKey/win32/OpenKey/OpenKey/StartConvert.ico,1,Tuyen Mai,maivutuyen.91@gmail.com,100,1
+78,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/OpenKeyUpdate.h,3,Tuyen Mai,maivutuyen.91@gmail.com,100,3
+79,Sources/OpenKey/win32/OpenKey/OpenKey/stdafx.h,87,Tuyen Mai,maivutuyen.91@gmail.com,100,87
+80,Sources/OpenKey/macOS/OpenKey.xcodeproj/xcuserdata/tuyen.xcuserdatad/xcschemes/xcschememanagement.plist,52,Tuyen Mai,maivutuyen.91@gmail.com,100,52
+81,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/DeclareDPIAware.manifest,7,Tuyen Mai,maivutuyen.91@gmail.com,100,7
+82,Sources/OpenKey/win32/README.md,77,Tuyen Mai,maivutuyen.91@gmail.com,100,77
+83,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKey.cpp,698,Tuyen Mai,maivutuyen.91@gmail.com,100,686
+84,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKey.cpp,698,Vu Ngoc Trung,trungvnse02967@fpt.edu.vn,null,12
+85,Sources/OpenKey/win32/OpenKey/OpenKey/StatusEng10.ico,9,Tuyen Mai,maivutuyen.91@gmail.com,100,9
+86,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/small.ico,21,Tuyen Mai,maivutuyen.91@gmail.com,100,21
+87,LICENSE,674,tuyenvm,changlangtu8855@gmail.com,100,674
+88,Sources/OpenKey/win32/OpenKey/OpenKey/AboutDialog.h,28,Tuyen Mai,maivutuyen.91@gmail.com,100,28
+89,macOS_Build.md,24,Tuyen Mai,maivutuyen.91@gmail.com,100,24
+90,Sources/OpenKey/win32/OpenKey/OpenKey/Style.manifest,19,Tuyen Mai,maivutuyen.91@gmail.com,100,19
+91,Sources/OpenKey/macOS/ModernKey/ModernKey.entitlements,5,Tuyen Mai,maivutuyen.91@gmail.com,100,5
+92,Sources/OpenKey/macOS/OpenKeyHelper/main.m,13,Tuyen Mai,maivutuyen.91@gmail.com,100,13
+93,Sources/OpenKey/macOS/ModernKey/OpenKeyManager.h,31,Tuyen Mai,maivutuyen.91@gmail.com,100,31
+94,Sources/OpenKey/win32/OpenKey/OpenKey/DeclareDPIAware.manifest,7,Tuyen Mai,maivutuyen.91@gmail.com,100,7
+95,CHANGELOG.md,144,Tuyen Mai,maivutuyen.91@gmail.com,100,144
+96,Sources/OpenKey/macOS/ModernKey/AboutViewController.m,59,Tuyen Mai,maivutuyen.91@gmail.com,100,59
+97,Sources/OpenKey/win32/OpenKey/OpenKey/ConvertToolDialog.cpp,247,Tuyen Mai,maivutuyen.91@gmail.com,100,247
+98,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKey.vcxproj.filters,179,Tuyen Mai,maivutuyen.91@gmail.com,100,179
+99,README.md,105,tuyenvm,changlangtu8855@gmail.com,100,11
+100,README.md,105,Tuyen Mai,maivutuyen.91@gmail.com,100,94
+101,Sources/OpenKey/macOS/ModernKey/AboutViewController.h,20,Tuyen Mai,maivutuyen.91@gmail.com,100,20
+102,Sources/OpenKey/win32/OpenKey/OpenKey/targetver.h,22,Tuyen Mai,maivutuyen.91@gmail.com,100,22
+103,Sources/OpenKey/macOS/ModernKey/AppDelegate.m,552,Vu Ngoc Trung,vungoctrung93@gmail.com,null,2
+104,Sources/OpenKey/macOS/ModernKey/AppDelegate.m,552,Dao Hoang Son,daohoangson@gmail.com,96,3
+105,Sources/OpenKey/macOS/ModernKey/AppDelegate.m,552,Nghia Luong,nghia@planday.com,null,17
+106,Sources/OpenKey/macOS/ModernKey/AppDelegate.m,552,Tuyen Mai,maivutuyen.91@gmail.com,100,495
+107,Sources/OpenKey/macOS/ModernKey/AppDelegate.m,552,trungnghiatn,chihuong.100@gmail.com,100,3
+108,Sources/OpenKey/macOS/ModernKey/AppDelegate.m,552,ntt123,ntt123@earth,97,29
+109,Sources/OpenKey/macOS/ModernKey/AppDelegate.m,552,Bach Le,ldbach97@gmail.com,null,3
+110,Sources/OpenKey/win32/OpenKey/OpenKey/MainControlDialog.h,51,Tuyen Mai,maivutuyen.91@gmail.com,100,51
+111,Sources/OpenKey/engine/platforms/win32.h,79,Tuyen Mai,maivutuyen.91@gmail.com,100,79
+112,Sources/OpenKey/macOS/OpenKey.xcodeproj/xcshareddata/xcschemes/OpenKeyUpdate.xcscheme,91,Tuyen Mai,maivutuyen.91@gmail.com,100,91
+113,Sources/OpenKey/macOS/ModernKey/OpenKeyManager.m,255,Tuyen Mai,maivutuyen.91@gmail.com,100,255
+114,Sources/OpenKey/macOS/ModernKey/Resources/StatusHighlighted@2x.png,66,Dao Hoang Son,daohoangson@gmail.com,96,64
+115,Sources/OpenKey/macOS/ModernKey/Resources/StatusHighlighted@2x.png,66,Tuyen Mai,maivutuyen.91@gmail.com,100,2
+116,Sources/OpenKey/engine/SmartSwitchKey.h,38,Tuyen Mai,maivutuyen.91@gmail.com,100,38
+117,Sources/OpenKey/macOS/ModernKey/AppDelegate.h,35,Tuyen Mai,maivutuyen.91@gmail.com,100,32
+118,Sources/OpenKey/macOS/ModernKey/AppDelegate.h,35,ntt123,ntt123@earth,97,3
+119,Sources/OpenKey/win32/OpenKey/OpenKey/StatusViet.ico,7,Tuyen Mai,maivutuyen.91@gmail.com,100,7
+120,Sources/OpenKey/engine/Engine.h,245,Vu Ngoc Trung,vungoctrung93@gmail.com,null,6
+121,Sources/OpenKey/engine/Engine.h,245,Tuyen Mai,maivutuyen.91@gmail.com,100,239
+122,Sources/OpenKey/macOS/ModernKey/Base.lproj/Main.storyboard,2281,Vu Ngoc Trung,vungoctrung93@gmail.com,null,67
+123,Sources/OpenKey/macOS/ModernKey/Base.lproj/Main.storyboard,2281,Tuyen Mai,maivutuyen.91@gmail.com,100,2190
+124,Sources/OpenKey/macOS/ModernKey/Base.lproj/Main.storyboard,2281,Bach Le,ldbach97@gmail.com,null,24
+125,Sources/OpenKey/engine/SmartSwitchKey.cpp,73,Tuyen Mai,maivutuyen.91@gmail.com,100,73
+126,Sources/OpenKey/macOS/.DS_Store,1,trungnghiatn,chihuong.100@gmail.com,100,1
+127,Sources/OpenKey/macOS/ModernKey/Resources/ExitButton.png,5,Tuyen Mai,maivutuyen.91@gmail.com,100,5
+128,Sources/OpenKey/macOS/OpenKey.xcodeproj/xcuserdata/tuyen.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist,4077,Tuyen Mai,maivutuyen.91@gmail.com,100,4077
+129,Sources/OpenKey/macOS/ModernKey/MacroViewController.h,23,Tuyen Mai,maivutuyen.91@gmail.com,100,23
+130,Sources/OpenKey/win32/OpenKey/OpenKey/DefaultButton.ico,1,Tuyen Mai,maivutuyen.91@gmail.com,100,1
+131,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/OpenKeyUpdate.rc,218,Tuyen Mai,maivutuyen.91@gmail.com,100,218
+132,Sources/OpenKey/macOS/ModernKey/Resources/StatusHighlightedEng.png,63,Dao Hoang Son,daohoangson@gmail.com,96,61
+133,Sources/OpenKey/macOS/ModernKey/Resources/StatusHighlightedEng.png,63,Tuyen Mai,maivutuyen.91@gmail.com,100,2
+134,Sources/OpenKey/macOS/OpenKey.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist,8,Tuyen Mai,maivutuyen.91@gmail.com,100,8
+135,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKey.rc,535,Tuyen Mai,maivutuyen.91@gmail.com,100,535
+136,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKey.vcxproj,226,Tuyen Mai,maivutuyen.91@gmail.com,100,226
+137,Sources/OpenKey/win32/OpenKey/OpenKey/icon.ico,43,Tuyen Mai,maivutuyen.91@gmail.com,100,43
+138,Sources/OpenKey/win32/OpenKey/OpenKey/stdafx.cpp,16,Tuyen Mai,maivutuyen.91@gmail.com,100,16
+139,Sources/OpenKey/win32/OpenKey/OpenKey/main.cpp,37,Tuyen Mai,maivutuyen.91@gmail.com,100,37
+140,Sources/OpenKey/macOS/ModernKey/Resources/OK.png,5,Tuyen Mai,maivutuyen.91@gmail.com,100,5
+141,Sources/OpenKey/engine/ConvertTool.h,28,Tuyen Mai,maivutuyen.91@gmail.com,100,28
+142,Sources/OpenKey/win32/OpenKey/OpenKey/resource.h,195,Tuyen Mai,maivutuyen.91@gmail.com,100,195
+143,Sources/OpenKey/linux/README.md,4,Tuyen Mai,maivutuyen.91@gmail.com,100,4
+144,Sources/OpenKey/win32/OpenKey/OpenKey/OpenKeyHelper.cpp,329,Tuyen Mai,maivutuyen.91@gmail.com,100,329
+145,Sources/OpenKey/win32/OpenKey/OpenKey/BaseDialog.h,38,Tuyen Mai,maivutuyen.91@gmail.com,100,38
+146,Sources/OpenKey/macOS/ModernKey/vi-VN.lproj/Main.strings,489,Tuyen Mai,maivutuyen.91@gmail.com,100,489
+147,Sources/README.md,4,Tuyen Mai,maivutuyen.91@gmail.com,100,4
+148,Sources/OpenKey/engine/platforms/mac.h,78,Tuyen Mai,maivutuyen.91@gmail.com,100,78
+149,Sources/OpenKey/macOS/OpenKey.xcodeproj/project.pbxproj,644,Vu Ngoc Trung,vungoctrung93@gmail.com,null,2
+150,Sources/OpenKey/macOS/OpenKey.xcodeproj/project.pbxproj,644,Tuyen Mai,maivutuyen.91@gmail.com,100,641
+151,Sources/OpenKey/macOS/OpenKey.xcodeproj/project.pbxproj,644,ntt123,ntt123@earth,97,1
+152,Sources/OpenKey/engine/Macro.cpp,293,Tuyen Mai,maivutuyen.91@gmail.com,100,293
+153,Sources/OpenKey/engine/Vietnamese.cpp,575,Tuyen Mai,maivutuyen.91@gmail.com,100,567
+154,Sources/OpenKey/engine/Vietnamese.cpp,575,Cương,tvc208@gmail.com,null,8
+155,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/OpenKeyUpdate.vcxproj,178,Tuyen Mai,maivutuyen.91@gmail.com,100,178
+156,Sources/OpenKey/win32/OpenKey/OpenKey/OKButton.ico,3,Tuyen Mai,maivutuyen.91@gmail.com,100,3
+157,Sources/OpenKey/win32/OpenKey/OpenKeyUpdate/Style.manifest,19,Tuyen Mai,maivutuyen.91@gmail.com,100,19
+158,Sources/OpenKey/macOS/ModernKey/ViewController.m,522,Vu Ngoc Trung,vungoctrung93@gmail.com,null,10
+159,Sources/OpenKey/macOS/ModernKey/ViewController.m,522,Tuyen Mai,maivutuyen.91@gmail.com,100,503
+160,Sources/OpenKey/macOS/ModernKey/ViewController.m,522,Bach Le,ldbach97@gmail.com,null,9
+161,Sources/OpenKey/engine/DataType.h,156,Tuyen Mai,maivutuyen.91@gmail.com,100,154
+162,Sources/OpenKey/engine/DataType.h,156,trungnghiatn,chihuong.100@gmail.com,100,1
+163,Sources/OpenKey/engine/DataType.h,156,ntt123,ntt123@earth,97,1
+164,Sources/OpenKey/engine/ConvertTool.cpp,180,Tuyen Mai,maivutuyen.91@gmail.com,100,180
+165,Sources/OpenKey/macOS/ModernKey/ViewController.h,75,Vu Ngoc Trung,vungoctrung93@gmail.com,null,2
+166,Sources/OpenKey/macOS/ModernKey/ViewController.h,75,Tuyen Mai,maivutuyen.91@gmail.com,100,72
+167,Sources/OpenKey/macOS/ModernKey/ViewController.h,75,Bach Le,ldbach97@gmail.com,null,1
+168,Sources/OpenKey/win32/OpenKey/OpenKey/AppDelegate.cpp,304,Tuyen Mai,maivutuyen.91@gmail.com,100,304
+169,Sources/OpenKey/macOS/ModernKey/Resources/OK@2x.png,9,Tuyen Mai,maivutuyen.91@gmail.com,100,9
+170,Sources/OpenKey/win32/OpenKey/OpenKey/StatusEng.ico,4,Tuyen Mai,maivutuyen.91@gmail.com,100,4
+
+
+
+
+3. Author Contribution Detail, 
+ ,author_name, author_email, line_added, line_removed, file_own, commit_count
+1,Vu Ngoc Trung,vungoctrung93@gmail.com,175,120,7,1
+2,Dao Hoang Son,daohoangson@gmail.com,3,1,17,1
+3,Nghia Luong,nghia@planday.com,17,10,1,1
+4,tuyenvm,changlangtu8855@gmail.com,704,1,2,2
+5,Tuyen Mai,maivutuyen.91@gmail.com,29429,4954,137,198
+6,Dung Nguyen,contact@dungnt.net,3,3,null,1
+7,ntt123,ntt123@earth,138,2,2,2
+8,Bach Le,ldbach97@gmail.com,109,33,null,1
+9,Vu Ngoc Trung,trungvnse02967@fpt.edu.vn,17,6,null,2
+10,Cương,tvc208@gmail.com,7,0,null,1
+11,Tuan,tuanpm@live.com,1,0,1,1
+12,ApolloRisky,quoccuong.nguyen265@hotmail.com,3,3,null,1
+13,trungnghiatn,chihuong.100@gmail.com,100,355,3,1
+
+
+
+

@@ -13,43 +13,48 @@ public class LogParser {
     public static List<CommitInfo> parseGitLog(String gitLog) {
         List<CommitInfo> commits = new ArrayList<>();
 
-        String[] lines = gitLog.split("\n");
-        CommitInfo currentCommit = null;
+        try {
 
-        Pattern commitPattern = Pattern.compile("^commit (\\w+)$");
-        Pattern authorPattern = Pattern.compile("^Author: (.+)$");
-        Pattern diffPattern = Pattern.compile("^[+\\-] (.*)$");
+            String[] lines = gitLog.split("\n");
+            CommitInfo currentCommit = null;
 
-        for (String line : lines) {
-            Matcher commitMatcher = commitPattern.matcher(line);
-            Matcher authorMatcher = authorPattern.matcher(line);
-            Matcher diffMatcher = diffPattern.matcher(line);
+            Pattern commitPattern = Pattern.compile("^commit (\\w+)$");
+            Pattern authorPattern = Pattern.compile("^Author: (.+)$");
+            Pattern diffPattern = Pattern.compile("^[+\\-] (.*)$");
 
-            if (commitMatcher.matches()) {
-                if (currentCommit != null) {
-                    commits.add(new CommitInfo(currentCommit));
-                }
-                currentCommit = new CommitInfo();
-                currentCommit.setCommitId(commitMatcher.group(1));
-            } else if (authorMatcher.matches()) {
-                currentCommit.setAuthor(extractAuthorFromStr(authorMatcher.group(1)));
-            } else if (line.startsWith("+") || line.startsWith("-")
-            ) {
-                if (!line.startsWith("+++") && !line.startsWith("---")) {
-                    if (line.startsWith("+")) {
-                        currentCommit.getLinesAdded().add(line.substring(1));
-                    } else if (line.startsWith("-")) {
-                        currentCommit.getLinesRemoved().add(line.substring(1));
+            for (String line : lines) {
+                Matcher commitMatcher = commitPattern.matcher(line);
+                Matcher authorMatcher = authorPattern.matcher(line);
+                Matcher diffMatcher = diffPattern.matcher(line);
+
+                if (commitMatcher.matches()) {
+                    if (currentCommit != null) {
+                        commits.add(new CommitInfo(currentCommit));
+                    }
+                    currentCommit = new CommitInfo();
+                    currentCommit.setCommitId(commitMatcher.group(1));
+                } else if (authorMatcher.matches()) {
+                    currentCommit.setAuthor(extractAuthorFromStr(authorMatcher.group(1)));
+                } else if (line.startsWith("+") || line.startsWith("-")) {
+                    if (!line.startsWith("+++") && !line.startsWith("---")) {
+                        if (line.startsWith("+")) {
+                            currentCommit.getLinesAdded().add(line.substring(1));
+                        } else if (line.startsWith("-")) {
+                            currentCommit.getLinesRemoved().add(line.substring(1));
+                        }
                     }
                 }
+
             }
-        }
 
-        // Add the last commit to the list
-        if (currentCommit != null) {
-            commits.add(new CommitInfo(currentCommit));
+            // Add the last commit to the list
+            if (currentCommit != null) {
+                commits.add(new CommitInfo(currentCommit));
+            }
+        } catch (Exception e) {
+            System.out.println("Error parsing git log");
+            System.out.println(e.getMessage());
         }
-
         return commits;
     }
 

@@ -40,7 +40,10 @@ public class Main {
 
         // write reprot
         CSVReporter csvReporter = new CSVReporter(fileOutput, authorStatsOutput, allAuthorMapByEmail);
-        csvReporter.writeReport("./" + repoFolder.getName() + "-report.csv");
+        String reportFilePath = "./" + repoFolder.getName() + "-report.csv";
+        csvReporter.writeReport(reportFilePath);
+        System.out.println();
+        System.out.println("The report has been written to " + reportFilePath);
     }
 
 }

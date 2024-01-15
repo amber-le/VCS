@@ -4,9 +4,9 @@ import com.amber.data.AuthorInfo;
 import com.amber.output.AuthorStatsOutput;
 import com.amber.output.FileLogOutput;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Map;
+import org.eclipse.jgit.lib.*;
 
 public class ReportOutputs {
     // fileOutput stores the file path, and the author line counts
@@ -34,10 +34,16 @@ public class ReportOutputs {
 
     public void writeReport(String filePath) throws IOException {
         outHtml.append(
-                "<style> body {padding-left: 30px; padding-right: 30px; display: flex; margin-left: auto; margin-right: auto; flex-direction: column; font-family: sans-serif;} table, th, td {  border: 1px solid #ddd; border-collapse: collapse; } " +
-                        "th, td { padding: 15px; } h1{text-align:center; color: #19447B; text-transform: uppercase } h2{font-size: 1.3rem; color: #F47421} th{background-color: #F1F2F2;} table{font-size:14px}</style> ");
+                "<style> body {padding-left: 30px; padding-right: 30px; display: flex; margin-left: auto; margin-right: auto; flex-direction: column; font-family: sans-serif; width: 70%;} table, th, td {  border: 1px solid #ddd; border-collapse: collapse; } " +
+                        "th, td { padding: 15px; } h1{text-align:center; color: #19447B; text-transform: uppercase; font-size: 26px; } h2{font-size: 20px; color: #F47421} th{background-color: #F1F2F2;} table{font-size:14px}</style> ");
+
+        //get the project name
+        String[] path = filePath.split("/");
+        String projectName = path[path.length - 1];
+        projectName = projectName.substring(0, projectName.length() - 7);
         outHtml.append("<br/>");
-        outHtml.append("<h1> Project Information </h1>");
+        outCsv.append("Project Report - ").append(projectName).append("\n");
+        outHtml.append("<h1> Project Report - ").append(projectName).append("</h1>");
         outCsv.append("\n\n\n\n");
         outHtml.append("<br/>");
         addProjectOverviewReport();

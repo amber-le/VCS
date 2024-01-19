@@ -9,6 +9,8 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import java.util.HashMap;
 import java.util.Map;
 
+
+// dùng để lấy thông tin người viết code của mỗi dòng code
 public class GitAuthorExtractor {
     private final Git git;
 
@@ -16,6 +18,7 @@ public class GitAuthorExtractor {
         this.git = git;
     }
 
+    // lấy thông tin người viết code của mỗi dòng code
     public Map<String, AuthorInfo> getAllAuthorMapByEmail() {
         try {
             Map<String, AuthorInfo> result = new HashMap<>();

@@ -5,10 +5,25 @@ public class Levenshtein {
     /**
      * Equivalent to distance(s1, s2, Integer.MAX_VALUE).
      */
+
+    // Dùng để so sánh 2 chuỗi
     public final double distance(final String s1, final String s2) {
         return distance(s1, s2, Integer.MAX_VALUE);
     }
 
+    /**
+     * Return the Levenshtein distance between the two strings.
+     *
+     * @param s1
+     *            The first string to compare.
+     * @param s2
+     *            The second string to compare.
+     * @param limit
+     *            The maximum result to compute before stopping. This
+     *            means that the calculation can terminate early if you
+     *            only care about strings with a certain similarity.
+     * @return The computed Levenshtein distance.
+     */
     public final double distance(final String s1, final String s2,
                                  final int limit) {
         if (s1 == null) {
@@ -46,7 +61,7 @@ public class Levenshtein {
         for (int i = 0; i < s1.length(); i++) {
             // calculate v1 (current row distances) from the previous row v0
             // first element of v1 is A[i+1][0]
-            //   edit distance is delete (i+1) chars from s to match empty t
+            //   edit distance is deleted (i+1) chars from s to match empty t
             v1[0] = i + 1;
 
             int minv1 = v1[0];

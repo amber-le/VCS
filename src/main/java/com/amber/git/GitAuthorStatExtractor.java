@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// dùng để tính toán số dòng code được thêm và bớt của mỗi author
 public class GitAuthorStatExtractor {
     Repository repository;
     Git git;

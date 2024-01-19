@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) throws IOException, GitAPIException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please input the repo full path:");
-        String defaultRepoPath = "/Users/craby/Documents/Documents - Wolf/TIC3901 Industrial Practice/Project/Example/duke";
+        String defaultRepoPath = "/Users/craby/Documents/Documents - Wolf/TIC3901 Industrial Practice/Project/Example/OpenKey";
         String repoPath = scanner.nextLine();
         if (Objects.equals(repoPath, "")) {
             repoPath = defaultRepoPath;

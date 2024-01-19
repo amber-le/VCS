@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// dùng để lấy thông tin người viết code của mỗi dòng code
 public class GitFileLogExtractor {
     String repoPath;
     Repository repository;

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// dùng để parse git log
 public class LogParser {
 
     public static List<CommitInfo> parseGitLog(String gitLog) {

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+// dùng để lấy thông tin người viết code của mỗi dòng code
 public class GitBlameExtractor {
     Repository repository;
     Git git;

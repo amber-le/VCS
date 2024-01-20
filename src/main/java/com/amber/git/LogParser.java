@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 // dùng để parse git log
 public class LogParser {
 
+    // parse git log to get commit info
     public static List<CommitInfo> parseGitLog(String gitLog) {
         List<CommitInfo> commits = new ArrayList<>();
 
@@ -28,7 +29,7 @@ public class LogParser {
                 Matcher authorMatcher = authorPattern.matcher(line);
                 Matcher diffMatcher = diffPattern.matcher(line);
 
-                if (commitMatcher.matches()) {
+                if (commitMatcher.matches()) { // if line is commit
                     if (currentCommit != null) {
                         commits.add(new CommitInfo(currentCommit));
                     }
@@ -45,7 +46,6 @@ public class LogParser {
                         }
                     }
                 }
-
             }
 
             // Add the last commit to the list
@@ -73,5 +73,4 @@ public class LogParser {
         String email = matcher.group(2).trim();
         return new AuthorInfo(email, name);
     }
-
 }

@@ -85,11 +85,11 @@ public class ReportOutputs {
         // project overview report
         outCsv.append("1. Project Overview, \n \n");
         outCsv.append(
-                "total_file, total_contributors, total_commit, total_line_added, total_line_removed, project_author\n");
+                "total_file, total_contributors, total_commit, total_line_added, total_line_removed, project_owner\n");
         outHtml.append("<h2>1. Project Overview</h2>");
         outHtml.append("<table border=\"1\">");
         outHtml.append("<tr><th>Total Files</th><th>Total Contributors</th>" +
-                               "<th>Total Commits</th><th>Total Lines Added</th><th>Total Lines Removed</th><th>Project Author</th></tr>");
+                               "<th>Total Commits</th><th>Total Lines Added</th><th>Total Lines Removed</th><th>Project Owner</th></tr>");
         int totalFile = fileOutput.size();
         int totalContributors = authorStatsOutput.size();
         int totalCommit = 0;

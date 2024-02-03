@@ -4,15 +4,16 @@ import com.amber.algo.Levenshtein;
 import com.amber.data.CommitInfo;
 import com.amber.output.FileLogOutput;
 import com.amber.utils.Command;
+import java.io.*;
+import org.apache.tika.*;
+import org.apache.tika.detect.*;
+import org.apache.tika.metadata.*;
+import org.apache.tika.mime.*;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.treewalk.TreeWalk;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,12 @@ public class GitFileLogExtractor {
             while (curLine <= noLines) {
                 List<CommitInfo> commitInfos = runLogCommand(repoPath, filePathStr, curLine);
 
+                if (!isTextFile(new File(repoPath + "/" + filePathStr))) {
+                    fileBlameOutput.addLine(commitInfos.get(0).getAuthor().getEmail());
+                    curLine = noLines + 1;
+                    continue;
+                }
+
                 for (CommitInfo commitInfo : commitInfos) {
                     String addedStr = String.join("\n", commitInfo.getLinesAdded());
                     String removedStr = String.join("\n", commitInfo.getLinesRemoved());
@@ -70,6 +77,18 @@ public class GitFileLogExtractor {
             }
         }
         return blameOutput;
+    }
+
+    private static boolean isTextFile(File file) {
+        try {
+            Tika tika = new Tika();
+            String fileType = tika.detect(file);
+            return fileType.startsWith("text/");
+        } catch (IOException e) {
+            System.out.printf(file.getAbsolutePath());
+            e.printStackTrace();
+            return false;  // An error occurred, treat as non-text file
+        }
     }
 
     public static int countLines(String filePath) throws IOException {

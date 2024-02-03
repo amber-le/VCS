@@ -37,7 +37,7 @@ public class Main {
         // Map<String, FileLogOutput> fileOutput = new GitFileLogExtractor(repoPath, repository, git).getOutput();
 
         // new version - using git blame
-        Map<String, FileLogOutput> fileOutput = new GitBlameExtractor(repository, git).getOutput();
+        Map<String, FileLogOutput> fileOutput = new GitBlameExtractor(repoPath, repository, git).getOutput();
         Map<String, AuthorInfo> allAuthorMapByEmail = new GitAuthorExtractor(git).getAllAuthorMapByEmail();
         Map<String, AuthorStatsOutput> authorStatsOutput = new GitAuthorStatExtractor(repository, git).getAuthorStatsOutput();
 

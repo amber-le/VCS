@@ -2,6 +2,7 @@ package com.amber.git;
 
 import com.amber.algo.Levenshtein;
 import com.amber.output.FileLogOutput;
+import org.apache.tika.Tika;
 import org.eclipse.jgit.api.BlameCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.LogCommand;
@@ -12,15 +13,18 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.treewalk.TreeWalk;
 
 import javax.sound.sampled.Line;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
 // dùng để lấy thông tin người viết code của mỗi dòng code
 public class GitBlameExtractor {
+    String repoPath;
     Repository repository;
     Git git;
 
-    public GitBlameExtractor(Repository repository, Git git) {
+    public GitBlameExtractor(String repoPath,Repository repository, Git git) {
+        this.repoPath = repoPath;
         this.repository = repository;
         this.git = git;
     }
@@ -48,10 +52,15 @@ public class GitBlameExtractor {
                 blameOutput.put(filePathStr, fileBlameOutput);
 
 
+
 //                System.out.println("blame -- " + filePathStr);
                 List<LineInfo> lines = new ArrayList<>();
                 Set<Integer> foundOwner = new HashSet<>();
                 for (RevCommit rev : log) {
+                    if (!isTextFile(new File(repoPath + "/" + filePathStr))) {
+                        fileBlameOutput.addLine(rev.getAuthorIdent().getEmailAddress());
+                        break;
+                    }
 //                    System.out.println("blame  at commit: " + rev.getId());
 //                    System.out.println(rev.getAuthorIdent().getName());
 
@@ -188,4 +197,16 @@ public class GitBlameExtractor {
             this.lineContent = lineContent;
         }
     }
+    private static boolean isTextFile(File file) {
+        try {
+            Tika tika = new Tika();
+            String fileType = tika.detect(file);
+            return fileType.startsWith("text/");
+        } catch (IOException e) {
+            System.out.printf(file.getAbsolutePath());
+            e.printStackTrace();
+            return false;  // An error occurred, treat as non-text file
+        }
+    }
+
 }

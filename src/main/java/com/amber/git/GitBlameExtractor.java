@@ -23,7 +23,7 @@ public class GitBlameExtractor {
     Repository repository;
     Git git;
 
-    public GitBlameExtractor(String repoPath,Repository repository, Git git) {
+    public GitBlameExtractor(String repoPath, Repository repository, Git git) {
         this.repoPath = repoPath;
         this.repository = repository;
         this.git = git;
@@ -52,10 +52,10 @@ public class GitBlameExtractor {
                 blameOutput.put(filePathStr, fileBlameOutput);
 
 
-
 //                System.out.println("blame -- " + filePathStr);
                 List<LineInfo> lines = new ArrayList<>();
                 Set<Integer> foundOwner = new HashSet<>();
+                int count = 0;
                 for (RevCommit rev : log) {
                     if (!isTextFile(new File(repoPath + "/" + filePathStr))) {
                         fileBlameOutput.addLine(rev.getAuthorIdent().getEmailAddress());
@@ -70,7 +70,7 @@ public class GitBlameExtractor {
 
                     BlameResult blameResult = blameCommand.call();
                     if (blameResult == null) {
-                        continue;
+                        break;
                     }
                     blameResult.computeAll();
 //                    System.out.println(blameResult.lastLength());
@@ -79,7 +79,6 @@ public class GitBlameExtractor {
                     List<LineInfo> tempLines = new ArrayList<>();
                     try {
                         while (blameResult.getSourceAuthor(i) != null) {
-                            fileBlameOutput.addLine(blameResult.getSourceAuthor(i).getEmailAddress());
 //                            StringBuilder builder = new StringBuilder();
 //                            builder.append(i).append(" - ").append(blameResult.getSourceAuthor(i));
 //                            System.out.println(builder);
@@ -89,7 +88,7 @@ public class GitBlameExtractor {
                     } catch (IndexOutOfBoundsException e) {
                     }
 
-                    if (lines.isEmpty()) {
+                    if (count == 0) {
                         lines = new ArrayList<>(tempLines);
                     } else {
                         findOwner(tempLines, lines, foundOwner);
@@ -97,10 +96,11 @@ public class GitBlameExtractor {
                     if (foundOwner.size() == lines.size()) {
                         break;
                     }
+                    count++;
                 }
                 for (LineInfo line : lines) {
                     if (line.authorEmail != null && !line.authorEmail.isEmpty()) {
-                        System.out.println(line.authorEmail + " - " + line.getLineNumber() + " - " + line.lineContent);
+//                        System.out.println(line.authorEmail + " - " + line.getLineNumber() + " - " + line.lineContent);
                         fileBlameOutput.addLine(line.authorEmail);
                     }
                 }
@@ -123,7 +123,7 @@ public class GitBlameExtractor {
 
             MostSimilarLine mostSimilarLine = findMostSimilar(currentLine, oldLines);
             if (mostSimilarLine.distance > 0.5) {
-                foundOwner.add(mostSimilarLine.mostSimilar.lineNumber);
+                foundOwner.add(currentLine.getLineNumber());
             } else {
                 currentLine.setLineContent(mostSimilarLine.mostSimilar.lineContent);
                 currentLine.setAuthorEmail(mostSimilarLine.mostSimilar.authorEmail);
@@ -197,6 +197,7 @@ public class GitBlameExtractor {
             this.lineContent = lineContent;
         }
     }
+
     private static boolean isTextFile(File file) {
         try {
             Tika tika = new Tika();

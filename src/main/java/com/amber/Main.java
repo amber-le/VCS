@@ -2,6 +2,7 @@ package com.amber;
 
 import com.amber.data.AuthorInfo;
 import com.amber.git.GitAuthorStatExtractor;
+import com.amber.git.GitBlameExtractor;
 import com.amber.git.GitFileLogExtractor;
 import com.amber.git.GitAuthorExtractor;
 import com.amber.output.AuthorStatsOutput;
@@ -32,8 +33,11 @@ public class Main {
         Git git = new Git(repository);
 
 
-        // extract outputs
-        Map<String, FileLogOutput> fileOutput = new GitFileLogExtractor(repoPath, repository, git).getOutput();
+        // old version - using git log -L
+        // Map<String, FileLogOutput> fileOutput = new GitFileLogExtractor(repoPath, repository, git).getOutput();
+
+        // new version - using git blame
+        Map<String, FileLogOutput> fileOutput = new GitBlameExtractor(repository, git).getOutput();
         Map<String, AuthorInfo> allAuthorMapByEmail = new GitAuthorExtractor(git).getAllAuthorMapByEmail();
         Map<String, AuthorStatsOutput> authorStatsOutput = new GitAuthorStatExtractor(repository, git).getAuthorStatsOutput();
 

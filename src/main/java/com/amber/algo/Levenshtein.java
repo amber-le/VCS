@@ -6,7 +6,6 @@ public class Levenshtein {
      * Equivalent to distance(s1, s2, Integer.MAX_VALUE).
      */
 
-    // Dùng để so sánh 2 chuỗi
     public final double distance(final String s1, final String s2) {
         return distance(s1, s2, Integer.MAX_VALUE);
     }

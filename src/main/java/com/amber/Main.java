@@ -19,19 +19,16 @@ public class Main {
     public static void main(String[] args) throws IOException, GitAPIException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please input the repo full path:");
-        String defaultRepoPath = "/Users/craby/Documents/Documents - Wolf/TIC3901 Industrial Practice/Project/Example/cs3201";
+        String defaultRepoPath = "/Users/craby/Documents/Documents - Wolf/TIC3901 Industrial Practice/Project/Example/OpenKey";
         String repoPath = scanner.nextLine();
         if (Objects.equals(repoPath, "")) {
             repoPath = defaultRepoPath;
         }
 
         File repoFolder = new File(repoPath);
-        Repository repository = new RepositoryBuilder()
-                .setGitDir(new File(repoPath + "/.git"))
-                .build();
+        Repository repository = new RepositoryBuilder().setGitDir(new File(repoPath + "/.git")).build();
 
         Git git = new Git(repository);
-
 
         // old version - using git log -L
         // Map<String, FileLogOutput> fileOutput = new GitFileLogExtractor(repoPath, repository, git).getOutput();
@@ -40,7 +37,6 @@ public class Main {
         Map<String, FileLogOutput> fileOutput = new GitBlameExtractor(repoPath, repository, git).getOutput();
         Map<String, AuthorInfo> allAuthorMapByEmail = new GitAuthorExtractor(git).getAllAuthorMapByEmail();
         Map<String, AuthorStatsOutput> authorStatsOutput = new GitAuthorStatExtractor(repository, git).getAuthorStatsOutput();
-
 
         // write report
         ReportOutputs csvReporter = new ReportOutputs(fileOutput, authorStatsOutput, allAuthorMapByEmail);

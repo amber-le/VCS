@@ -66,8 +66,8 @@ public class GitFileLogExtractor {
                             addedStr,
                             removedStr
                     );
-                    // if new changes is more than 50% -> consider the author as owner of the line
-                    double min = 0.5 * removedStr.length();
+                    // if new changes is more than 70% -> consider the author as owner of the line
+                    double min = 0.7 * removedStr.length();
                     if (distance >= min || commitInfo.getLinesRemoved().isEmpty()) {
                         fileBlameOutput.addLine(commitInfo.getAuthor().getEmail());
                         break;

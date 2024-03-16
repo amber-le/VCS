@@ -5,7 +5,8 @@ import com.amber.output.AuthorStatsOutput;
 import com.amber.output.FileLogOutput;
 
 import java.io.*;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.*;
 
 public class ReportOutputs {
     // fileOutput stores the file path, and the author line counts
@@ -138,40 +139,54 @@ public class ReportOutputs {
         outHtml.append("</table>");
 
     }
+
     private void addFileOverviewReport() {
         // Write a File report
         Map<String, Object> percentContributed = addFileOwnerReport().get("percentContributed");
         Map<String, Object> lineContributed = addFileOwnerReport().get("lineContributed");
         Map<String, Object> countFileLine = addFileOwnerReport().get("countFileLine");
         Map<String, Object> fileOwner = addFileOwnerReport().get("fileOwner");
+
+        //add 1 more column that will show the rest of the author who contributed to the file and their line count
+
         outCsv.append("2. File Overview, \n \n");
-        outCsv.append(" , file_path, file_lines, file_owner, owner's_email, %_contributed, line_contributed\n");
+        outCsv.append(" , file_path, file_lines, file_owner, owner's_email, %_contributed, line_contributed, " +
+                              "other_contributors(line)\n");
         outHtml.append("<h2>2. File Overview</h2>");
         outHtml.append("<table border=\"1\">");
         outHtml.append("<tr><th> </th><th>File Path</th><th>File Lines</th><th>File Owner</th>" +
-                               "<th>Owner's Email</th><th>% Contributed</th><th>Line Contributed</th></tr>");
+                               "<th>Owner's Email</th><th>% Contributed</th><th>Line Contributed</th><th>Other " +
+                               "Contributors(line)</th></tr>");
+
         int stt = 0;
         for (Map.Entry<String, FileLogOutput> output : fileOutput.entrySet()) {
             String key = output.getKey();
             FileLogOutput value = output.getValue();
             String ownerEmail = String.valueOf(fileOwner.get(key));
 
+            // Get the map of authors and their line counts, excluding the file owner
+            Map<String, Integer> otherAuthorsLineCount = new HashMap<>(value.getAuthorLineCount());
+            otherAuthorsLineCount.remove(ownerEmail);
+            // Convert the map to a string representation
+            String otherContributors = otherAuthorsLineCount.entrySet().stream().map(entry -> allAuthorMapByEmail.get(
+                    entry.getKey()).getName() + " (" + entry.getValue() + ")").collect(Collectors.joining(", "));
+
             AuthorInfo authorInfo = allAuthorMapByEmail.get(ownerEmail);
             outCsv.append(++stt).append(",").append(key).append(",").append(countFileLine.get(key)).append(",")
                   .append(authorInfo.getName()).append(",").append(ownerEmail).append(",")
-                  .append(percentContributed.get(key)).append("%").append(",")
-                  .append(lineContributed.get(key)).append("\n");
-            outHtml.append("<tr><td style = text-align:center>").append(stt).append("</td><td class=file-path>").append(key)
-                   .append("</td><td style = text-align:center>").append(countFileLine.get(key)).append("</td><td class=author-name>")
-                   .append(authorInfo.getName()).append("</td><td class=author-email>").append(ownerEmail)
-                   .append("</td><td style = text-align:center>")
-                   .append(percentContributed.get(key))
-                   .append("%</td><td style = text-align:center>").append(lineContributed.get(key))
-                   .append("</td></tr>");
-
+                  .append(percentContributed.get(key)).append("%").append(",").append(lineContributed.get(key))
+                  .append(",").append(otherContributors).append("\n");
+            outHtml.append("<tr><td style = text-align:center>").append(stt).append("</td><td class=file-path>")
+                   .append(key).append("</td><td style = text-align:center>").append(countFileLine.get(key))
+                   .append("</td><td class=author-name>").append(authorInfo.getName())
+                   .append("</td><td class=author-email>").append(ownerEmail)
+                   .append("</td><td style = text-align:center>").append(percentContributed.get(key))
+                   .append("%</td><td style = text-align:center>").append(lineContributed.get(key)).append("<td>")
+                   .append(otherContributors).append("</td></tr>");
         }
         outHtml.append("</table>");
     }
+
     private void addAuthorContributionOverviewReport() {
         // write an author report
         Map<String, Object> ownerFileCount = addFileOwnerReport().get("fileOwnerCount");
@@ -202,17 +217,18 @@ public class ReportOutputs {
         outHtml.append("</table>");
     }
 
-
-
     private Map<String, Map<String, Object>> addFileOwnerReport() {
 
-
-        Map<String, Object> countFileLine = new java.util.HashMap<>(); //key = file path, value = number of lines in the file path
+        Map<String, Object> countFileLine =
+                new java.util.HashMap<>(); //key = file path, value = number of lines in the file path
         Map<String, Object> fileOwner = new java.util.HashMap<>(); //key = file path, value = owner of the file
 
-        Map<String, Object> percentContributed = new java.util.HashMap<>(); //key = file path, value = percent contributed of the owner of the file
-        Map<String, Object> lineContributed = new java.util.HashMap<>(); //key = file path, value = line contributed of the owner of the file
-        Map<String, Object> fileOwnerCount = new java.util.HashMap<>(); //key = owner email, value = number of files owned by the owner in the project
+        Map<String, Object> percentContributed =
+                new java.util.HashMap<>(); //key = file path, value = percent contributed of the owner of the file
+        Map<String, Object> lineContributed =
+                new java.util.HashMap<>(); //key = file path, value = line contributed of the owner of the file
+        Map<String, Object> fileOwnerCount =
+                new java.util.HashMap<>(); //key = owner email, value = number of files owned by the owner in the project
 
         //loop through all files
         for (Map.Entry<String, FileLogOutput> output : fileOutput.entrySet()) {
@@ -234,7 +250,7 @@ public class ReportOutputs {
             countFileLine.put(key, total);
 
             if (fileOwnerCount.containsKey(ownerEmail)) {
-                fileOwnerCount.put(ownerEmail, (Integer)fileOwnerCount.get(ownerEmail) + 1);
+                fileOwnerCount.put(ownerEmail, (Integer) fileOwnerCount.get(ownerEmail) + 1);
             } else {
                 fileOwnerCount.put(ownerEmail, 1);
             }
@@ -250,7 +266,7 @@ public class ReportOutputs {
 //                  .append(percentage.isNaN() ? "NaN" : String.format("%.2f", percentage)).append("\n");
         }
         Map<String, Map<String, Object>> numberInfo = new java.util.HashMap<>();
-        numberInfo.put("percentContributed",percentContributed);
+        numberInfo.put("percentContributed", percentContributed);
         numberInfo.put("lineContributed", lineContributed);
         numberInfo.put("fileOwnerCount", fileOwnerCount);
         numberInfo.put("countFileLine", countFileLine);

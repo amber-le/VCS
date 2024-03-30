@@ -6,9 +6,7 @@ import com.amber.output.FileLogOutput;
 import com.amber.utils.Command;
 import java.io.*;
 import org.apache.tika.*;
-import org.apache.tika.detect.*;
-import org.apache.tika.metadata.*;
-import org.apache.tika.mime.*;
+
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
@@ -18,7 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// dùng để lấy thông tin người viết code của mỗi dòng code
 public class GitFileLogExtractor {
     String repoPath;
     Repository repository;
@@ -62,10 +59,7 @@ public class GitFileLogExtractor {
                 for (CommitInfo commitInfo : commitInfos) {
                     String addedStr = String.join("\n", commitInfo.getLinesAdded());
                     String removedStr = String.join("\n", commitInfo.getLinesRemoved());
-                    double distance = levenshtein.distance(
-                            addedStr,
-                            removedStr
-                    );
+                    double distance = levenshtein.distance(addedStr, removedStr);
                     // if new changes is more than 70% -> consider the author as owner of the line
                     double min = 0.7 * removedStr.length();
                     if (distance >= min || commitInfo.getLinesRemoved().isEmpty()) {
@@ -83,7 +77,9 @@ public class GitFileLogExtractor {
         try {
             Tika tika = new Tika();
             String fileType = tika.detect(file);
-            return fileType.startsWith("text/");
+
+            return fileType.startsWith("text") || fileType.startsWith("application/javascript");
+
         } catch (IOException e) {
             System.out.printf(file.getAbsolutePath());
             e.printStackTrace();

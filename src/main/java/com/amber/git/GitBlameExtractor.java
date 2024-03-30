@@ -17,7 +17,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-// dùng để lấy thông tin người viết code của mỗi dòng code
 public class GitBlameExtractor {
     String repoPath;
     Repository repository;
@@ -42,7 +41,7 @@ public class GitBlameExtractor {
                     continue;
                 }
                 String filePathStr = treeWalk.getPathString();
-
+                System.out.printf("blame -- %s\n", filePathStr);
 
                 LogCommand logCommand = git.log();
                 logCommand.addPath(filePathStr);
@@ -51,9 +50,8 @@ public class GitBlameExtractor {
                 FileLogOutput fileBlameOutput = new FileLogOutput(filePathStr);
                 blameOutput.put(filePathStr, fileBlameOutput);
 
-
 //                System.out.println("blame -- " + filePathStr);
-                List<LineInfo> lines = new ArrayList<>();
+                List<LineInfo> currentLines = new ArrayList<>();
                 Set<Integer> foundOwner = new HashSet<>();
                 int count = 0;
                 for (RevCommit rev : log) {
@@ -89,16 +87,16 @@ public class GitBlameExtractor {
                     }
 
                     if (count == 0) {
-                        lines = new ArrayList<>(tempLines);
+                        currentLines = new ArrayList<>(tempLines);
                     } else {
-                        findOwner(tempLines, lines, foundOwner);
+                        findOwner(currentLines, tempLines, foundOwner, filePathStr.equals("frontend/src/index.css"));
                     }
-                    if (foundOwner.size() == lines.size()) {
-                        break;
-                    }
+//                    if (foundOwner.size() == currentLines.size()) {
+//                        break;
+//                    }
                     count++;
                 }
-                for (LineInfo line : lines) {
+                for (LineInfo line : currentLines) {
                     if (line.authorEmail != null && !line.authorEmail.isEmpty()) {
 //                        System.out.println(line.authorEmail + " - " + line.getLineNumber() + " - " + line.lineContent);
                         fileBlameOutput.addLine(line.authorEmail);
@@ -115,28 +113,62 @@ public class GitBlameExtractor {
         }
     }
 
-    private void findOwner(List<LineInfo> currentLines, List<LineInfo> oldLines, Set<Integer> foundOwner) {
+    private void findOwner(List<LineInfo> currentLines, List<LineInfo> oldLines, Set<Integer> foundOwner, boolean printDetail) {
+        Set<Integer> matchedLines = new HashSet<>();
+//
+        if (printDetail) {
+            // print out the current lines and old lines
+            System.out.println("current lines: ");
+            for (LineInfo line : currentLines) {
+                System.out.println(line.lineContent);
+            }
+            System.out.println("old lines: ");
+            for (LineInfo line : oldLines) {
+                System.out.println(line.lineContent);
+            }
+
+        }
+
         for (LineInfo currentLine : currentLines) {
-            if (foundOwner.contains(currentLine.lineNumber)) {
+//            if (foundOwner.contains(currentLine.lineNumber)) {
+//                continue;
+//            }
+
+            MostSimilarLine mostSimilarLine = findMostSimilar(currentLine, oldLines, matchedLines);
+
+            if (mostSimilarLine.mostSimilar == null) {
                 continue;
             }
 
-            MostSimilarLine mostSimilarLine = findMostSimilar(currentLine, oldLines);
-            if (mostSimilarLine.distance > 0.5) {
-                foundOwner.add(currentLine.getLineNumber());
-            } else {
-                currentLine.setLineContent(mostSimilarLine.mostSimilar.lineContent);
-                currentLine.setAuthorEmail(mostSimilarLine.mostSimilar.authorEmail);
+            if (printDetail) {
+//                 print out detail of current line and most similar line and distance and author
+                System.out.println("---------");
+                System.out.println("current line: " + currentLine.lineContent);
+                System.out.println("most similar line: " + mostSimilarLine.mostSimilar.lineContent);
+                System.out.println("distance: " + mostSimilarLine.distance);
+                System.out.println("author: " + mostSimilarLine.mostSimilar.authorEmail);
+                System.out.println("current author: " + currentLine.authorEmail);
             }
+            if (mostSimilarLine.distance < 0.7) {
+//                foundOwner.add(currentLine.lineNumber);
+                matchedLines.add(mostSimilarLine.mostSimilar.lineNumber);
+                currentLine.setAuthorEmail(mostSimilarLine.mostSimilar.authorEmail);
+                continue;
+            }
+//            currentLine.setLineContent(mostSimilarLine.mostSimilar.lineContent);
+
+
         }
     }
 
-
-    private MostSimilarLine findMostSimilar(LineInfo line, List<LineInfo> lines) {
+    private MostSimilarLine findMostSimilar(LineInfo line, List<LineInfo> lines, Set<Integer> matchedLines) {
         Levenshtein levenshtein = new Levenshtein();
         double minDistance = Double.MAX_VALUE;
         LineInfo mostSimilar = null;
         for (LineInfo otherLine : lines) {
+            if (matchedLines.contains(otherLine.lineNumber)) {
+                continue;
+            }
             double distance = levenshtein.distance(line.lineContent, otherLine.lineContent);
             if (distance < minDistance) {
                 minDistance = distance;
@@ -147,7 +179,7 @@ public class GitBlameExtractor {
                 }
             }
         }
-        return new MostSimilarLine(line, mostSimilar, minDistance);
+        return new MostSimilarLine(line, mostSimilar, line.lineContent.length() ==0 ? minDistance : minDistance/line.lineContent.length());
     }
 
     private static class MostSimilarLine {
@@ -202,7 +234,7 @@ public class GitBlameExtractor {
         try {
             Tika tika = new Tika();
             String fileType = tika.detect(file);
-            return fileType.startsWith("text/");
+            return fileType.startsWith("text") || fileType.startsWith("application/javascript");
         } catch (IOException e) {
             System.out.printf(file.getAbsolutePath());
             e.printStackTrace();

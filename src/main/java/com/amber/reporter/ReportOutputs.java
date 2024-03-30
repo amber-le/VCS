@@ -25,17 +25,15 @@ public class ReportOutputs {
     StringBuilder outCsv = new StringBuilder();
     private final StringBuilder outHtml = new StringBuilder();
 
-    public ReportOutputs(Map<String, FileLogOutput> fileOutput, Map<String, AuthorStatsOutput> authorStatsOutput,
-                         Map<String, AuthorInfo> allAuthorMapByEmail) {
+    public ReportOutputs(Map<String, FileLogOutput> fileOutput, Map<String, AuthorStatsOutput> authorStatsOutput, Map<String, AuthorInfo> allAuthorMapByEmail) {
         this.fileOutput = fileOutput;
         this.authorStatsOutput = authorStatsOutput;
         this.allAuthorMapByEmail = allAuthorMapByEmail;
     }
 
     public void writeReport(String filePath) throws IOException {
-        outHtml.append(
-                "<style> body {padding-left: 30px; padding-right: 30px; display: flex; margin-left: auto; margin-right: auto; flex-direction: column; font-family: sans-serif; width: 70%;} table, th, td {  border: 1px solid #ddd; border-collapse: collapse; } " +
-                        "th, td, tr { padding: 10px; } h1{text-align:center; color: #19447B; text-transform: uppercase; font-size: 26px; } h2{font-size: 20px; color: #F47421} th{background-color: #F1F2F2;} table{font-size:14px;} .author-name{word-break:break-word; text-align: center; text-transform: capitalize;} .author-email{word-break:break-word; font-size:12px;} .file-path{word-break:break-word;} </style> ");
+        outHtml.append("<style> body {padding-left: 30px; padding-right: 30px; display: flex; margin-left: auto; margin-right: auto; flex-direction: column; font-family: sans-serif; width: 80%;} table, th, td {  border: 1px solid #ddd; border-collapse: collapse; } " +
+                               "th, td, tr { padding: 10px; } h1{text-align:center; color: #19447B; text-transform: uppercase; font-size: 26px; } h2{font-size: 20px; color: #F47421} th{background-color: #F1F2F2;} table{font-size:14px;} .author-name{word-break:break-word; text-align: center; text-transform: capitalize;} .author-email{word-break:break-word; font-size:12px;} .file-path{word-break:break-word;} </style> ");
 
         //get the project name
         String[] path = filePath.split("/");
@@ -85,12 +83,10 @@ public class ReportOutputs {
     private void addProjectOverviewReport() {
         // project overview report
         outCsv.append("1. Project Overview, \n \n");
-        outCsv.append(
-                "total_file, total_contributors, total_commit, total_line_added, total_line_removed, project_owner\n");
+        outCsv.append("total_file, total_contributors, total_commit, total_line_added, total_line_removed, project_owner\n");
         outHtml.append("<h2>1. Project Overview</h2>");
         outHtml.append("<table border=\"1\">");
-        outHtml.append("<tr><th>Total Files</th><th>Total Contributors</th>" +
-                               "<th>Total Commits</th><th>Total Lines Added</th><th>Total Lines Removed</th><th>Project Owner</th></tr>");
+        outHtml.append("<tr><th>Total Files</th><th>Total Contributors</th><th>Total Commits</th><th>Total Lines Added</th><th>Total Lines Removed</th><th>Project Owner</th></tr>");
         int totalFile = fileOutput.size();
         int totalContributors = authorStatsOutput.size();
         int totalCommit = 0;
@@ -129,12 +125,8 @@ public class ReportOutputs {
         }
 
         // csv report
-        outCsv.append(totalFile).append(",").append(totalContributors).append(",").append(totalCommit).append(",")
-              .append(totalLineAdded).append(",").append(totalLineRemoved).append(",")
-              .append(allAuthorMapByEmail.get(projectAuthor).getName()).append("\n");
-        outHtml.append("<tr style = text-align:center><td>").append(totalFile).append("</td><td>")
-               .append(totalContributors).append("</td><td>").append(totalCommit).append("</td><td>")
-               .append(totalLineAdded).append("</td><td>").append(totalLineRemoved).append("</td><td>")
+        outCsv.append(totalFile).append(",").append(totalContributors).append(",").append(totalCommit).append(",").append(totalLineAdded).append(",").append(totalLineRemoved).append(",").append(allAuthorMapByEmail.get(projectAuthor).getName()).append("\n");
+        outHtml.append("<tr style = text-align:center><td>").append(totalFile).append("</td><td>").append(totalContributors).append("</td><td>").append(totalCommit).append("</td><td>").append(totalLineAdded).append("</td><td>").append(totalLineRemoved).append("</td><td>")
                .append(allAuthorMapByEmail.get(projectAuthor).getName()).append("</td></tr>");
         outHtml.append("</table>");
 
@@ -150,13 +142,10 @@ public class ReportOutputs {
         //add 1 more column that will show the rest of the author who contributed to the file and their line count
 
         outCsv.append("2. File Overview, \n \n");
-        outCsv.append(" , file_path, file_lines, file_owner, owner's_email, %_contributed, line_contributed, " +
-                              "other_contributors(line)\n");
+        outCsv.append(" , file_path, file_lines, file_owner, owner's_email, %_contributed, line_contributed, " + "other_contributors(line)\n");
         outHtml.append("<h2>2. File Overview</h2>");
         outHtml.append("<table border=\"1\">");
-        outHtml.append("<tr><th> </th><th>File Path</th><th>File Lines</th><th>File Owner</th>" +
-                               "<th>Owner's Email</th><th>% Contributed</th><th>Line Contributed</th><th>Other " +
-                               "Contributors(line)</th></tr>");
+        outHtml.append("<tr><th> </th><th>File Path</th><th>File Lines</th><th>File Owner</th>" + "<th>Owner's Email</th><th>% Contributed</th><th>Line Contributed</th><th>Other " + "Contributors(line)</th></tr>");
 
         int stt = 0;
         for (Map.Entry<String, FileLogOutput> output : fileOutput.entrySet()) {
@@ -168,21 +157,14 @@ public class ReportOutputs {
             Map<String, Integer> otherAuthorsLineCount = new HashMap<>(value.getAuthorLineCount());
             otherAuthorsLineCount.remove(ownerEmail);
             // Convert the map to a string representation
-            String otherContributors = otherAuthorsLineCount.entrySet().stream().map(entry -> allAuthorMapByEmail.get(
-                    entry.getKey()).getName() + " (" + entry.getValue() + ")").collect(Collectors.joining(", "));
+            String otherContributors = otherAuthorsLineCount.entrySet().stream().map(entry -> allAuthorMapByEmail.get(entry.getKey()).getName() + " (" + entry.getValue() + ")").collect(Collectors.joining("; "));
 
             AuthorInfo authorInfo = allAuthorMapByEmail.get(ownerEmail);
-            outCsv.append(++stt).append(",").append(key).append(",").append(countFileLine.get(key)).append(",")
-                  .append(authorInfo.getName()).append(",").append(ownerEmail).append(",")
-                  .append(percentContributed.get(key)).append("%").append(",").append(lineContributed.get(key))
-                  .append(",").append(otherContributors).append("\n");
-            outHtml.append("<tr><td style = text-align:center>").append(stt).append("</td><td class=file-path>")
-                   .append(key).append("</td><td style = text-align:center>").append(countFileLine.get(key))
-                   .append("</td><td class=author-name>").append(authorInfo.getName())
-                   .append("</td><td class=author-email>").append(ownerEmail)
-                   .append("</td><td style = text-align:center>").append(percentContributed.get(key))
-                   .append("%</td><td style = text-align:center>").append(lineContributed.get(key)).append("<td>")
-                   .append(otherContributors).append("</td></tr>");
+            outCsv.append(++stt).append(",").append(key).append(",").append(countFileLine.get(key)).append(",").append(authorInfo.getName()).append(",").append(ownerEmail).append(",").append(percentContributed.get(key)).append("%").append(",").append(lineContributed.get(key)).append(",")
+                  .append(otherContributors).append("\n");
+            outHtml.append("<tr><td style = text-align:center>").append(stt).append("</td><td class=file-path>").append(key).append("</td><td style = text-align:center>").append(countFileLine.get(key)).append("</td><td class=author-name>").append(authorInfo.getName())
+                   .append("</td><td class=author-email>").append(ownerEmail).append("</td><td style = text-align:center>").append(percentContributed.get(key)).append("%</td><td style = text-align:center>").append(lineContributed.get(key)).append("<td>").append(otherContributors)
+                   .append("</td></tr>");
         }
         outHtml.append("</table>");
     }
@@ -194,24 +176,16 @@ public class ReportOutputs {
         outCsv.append(" ,contributor_name, contributor_email, line_added, line_removed, file_own, commit_count\n");
         outHtml.append("<h2>3. Author Contribution Overview</h2>");
         outHtml.append("<table border=\"1\">");
-        outHtml.append("<tr><th> </th><th>Contributor Name</th><th>Contributor Email</th><th>Lines Added</th>" +
-                               "<th>Lines Removed</th><th>Total Files Owned</th><th>Total Commit</th></tr>");
+        outHtml.append("<tr><th> </th><th>Contributor Name</th><th>Contributor Email</th><th>Lines Added</th>" + "<th>Lines Removed</th><th>Total Files Owned</th><th>Total Commit</th></tr>");
 
         int stt = 0;
         for (Map.Entry<String, AuthorStatsOutput> authorStat : authorStatsOutput.entrySet()) {
             AuthorInfo authorInfo = allAuthorMapByEmail.get(authorStat.getKey());
-            outCsv.append(++stt).append(",").append(authorInfo.getName()).append(",").append(authorInfo.getEmail())
-                  .append(",").append(authorStat.getValue().getLineAdded()).append(",")
-                  .append(authorStat.getValue().getLineRemoved()).append(",")
-                  .append(ownerFileCount.get(authorInfo.getEmail())).append(",")
-                  .append(authorStat.getValue().getCommitCount()).append("\n");
-            outHtml.append("<tr><td style = text-align:center>").append(stt).append("</td><td class=author-name>")
-                   .append(authorInfo.getName()).append("</td><td class=author-email>").append(authorInfo.getEmail())
-                   .append("</td><td style = text-align:right>").append(authorStat.getValue().getLineAdded())
-                   .append("</td><td style = text-align:right>").append(authorStat.getValue().getLineRemoved())
-                   .append("</td><td style = text-align:right>").append(ownerFileCount.get(authorInfo.getEmail()))
-                   .append("</td><td style = text-align:right>").append(authorStat.getValue().getCommitCount())
-                   .append("</td></tr>");
+            outCsv.append(++stt).append(",").append(authorInfo.getName()).append(",").append(authorInfo.getEmail()).append(",").append(authorStat.getValue().getLineAdded()).append(",").append(authorStat.getValue().getLineRemoved()).append(",").append(ownerFileCount.get(authorInfo.getEmail()))
+                  .append(",").append(authorStat.getValue().getCommitCount()).append("\n");
+            outHtml.append("<tr><td style = text-align:center>").append(stt).append("</td><td class=author-name>").append(authorInfo.getName()).append("</td><td class=author-email>").append(authorInfo.getEmail()).append("</td><td style = text-align:center>")
+                   .append(authorStat.getValue().getLineAdded()).append("</td><td style = text-align:center>").append(authorStat.getValue().getLineRemoved()).append("</td><td style = text-align:center>").append(ownerFileCount.get(authorInfo.getEmail())).append("</td><td style = text-align:center>")
+                   .append(authorStat.getValue().getCommitCount()).append("</td></tr>");
 
         }
         outHtml.append("</table>");
@@ -219,16 +193,12 @@ public class ReportOutputs {
 
     private Map<String, Map<String, Object>> addFileOwnerReport() {
 
-        Map<String, Object> countFileLine =
-                new java.util.HashMap<>(); //key = file path, value = number of lines in the file path
+        Map<String, Object> countFileLine = new java.util.HashMap<>(); //key = file path, value = number of lines in the file path
         Map<String, Object> fileOwner = new java.util.HashMap<>(); //key = file path, value = owner of the file
 
-        Map<String, Object> percentContributed =
-                new java.util.HashMap<>(); //key = file path, value = percent contributed of the owner of the file
-        Map<String, Object> lineContributed =
-                new java.util.HashMap<>(); //key = file path, value = line contributed of the owner of the file
-        Map<String, Object> fileOwnerCount =
-                new java.util.HashMap<>(); //key = owner email, value = number of files owned by the owner in the project
+        Map<String, Object> percentContributed = new java.util.HashMap<>(); //key = file path, value = percent contributed of the owner of the file
+        Map<String, Object> lineContributed = new java.util.HashMap<>(); //key = file path, value = line contributed of the owner of the file
+        Map<String, Object> fileOwnerCount = new java.util.HashMap<>(); //key = owner email, value = number of files owned by the owner in the project
 
         //loop through all files
         for (Map.Entry<String, FileLogOutput> output : fileOutput.entrySet()) {

@@ -3,7 +3,6 @@ package com.amber;
 import com.amber.data.AuthorInfo;
 import com.amber.git.GitAuthorStatExtractor;
 import com.amber.git.GitBlameExtractor;
-import com.amber.git.GitFileLogExtractor;
 import com.amber.git.GitAuthorExtractor;
 import com.amber.output.AuthorStatsOutput;
 import com.amber.output.FileLogOutput;
@@ -19,7 +18,9 @@ public class Main {
     public static void main(String[] args) throws IOException, GitAPIException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please input the repo full path:");
-        String defaultRepoPath = "/Users/craby/Documents/Documents - Wolf/TIC3901 Industrial Practice/Project/Example/OpenKey";
+//        String defaultRepoPath = "/Users/craby/Documents/Documents - Wolf/TIC3901 Industrial Practice/Project/Example/cs3201";
+        String defaultRepoPath = "/Users/craby/Documents/Documents - Wolf/TIC3001 Software Requirements Analysis and Design/Project TIC3001/peerprep-g05";
+
         String repoPath = scanner.nextLine();
         if (Objects.equals(repoPath, "")) {
             repoPath = defaultRepoPath;
